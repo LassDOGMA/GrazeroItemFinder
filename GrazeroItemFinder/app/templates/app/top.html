@@ -1,0 +1,28 @@
+﻿{% block content %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>sample</title>
+    <meta http-equiv="content-type" charset="utf-8">
+</head>
+
+<body>
+    <h2>{{ title }}.</h2>
+    <h3>{{ message }}</h3>
+
+    <p>Hello Word.</p>
+
+    <div>Relay 1:
+      <form action="{% url 'updata_item_list' %}" method="POST">
+          {% csrf_token %}
+          <input type="submit" value="アイテム情報最新化" id="updata_button_id" />
+      </form>
+    </div>
+
+</body>
+
+</html>
+
+{% endblock %}

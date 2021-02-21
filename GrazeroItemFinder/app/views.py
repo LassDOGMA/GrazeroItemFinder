@@ -5,25 +5,27 @@ Definition of views.
 from datetime import datetime
 from django.shortcuts import render
 from django.http import HttpRequest
+from GrazeroItemFinder import finderMain
 
-def home(request):
-    """Renders the home page."""
+# トップページ
+def top(request):
     assert isinstance(request, HttpRequest)
     return render(
         request,
-        'app/index.html',
+        'app/top.html',
         {
-            'title':'Home Page',
+            'title':'トップページ',
+            'message':'メッセージ',
             'year':datetime.now().year,
         }
     )
 
-def contact(request):
-    """Renders the contact page."""
+# 工事中
+def construction(request):
     assert isinstance(request, HttpRequest)
     return render(
         request,
-        'app/contact.html',
+        'app/construction.html',
         {
             'title':'Contact',
             'message':'Your contact page.',
@@ -31,15 +33,7 @@ def contact(request):
         }
     )
 
-def about(request):
-    """Renders the about page."""
-    assert isinstance(request, HttpRequest)
-    return render(
-        request,
-        'app/about.html',
-        {
-            'title':'About',
-            'message':'Your application description page.',
-            'year':datetime.now().year,
-        }
-    )
+# 更新ボタン
+def updata_button(request):
+    if request.method == 'POST':
+        finderMain.finderMain()
